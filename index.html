@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>X-ray & Ultrasound System - DFD & ER Diagrams</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Arial,sans-serif;background:#f5f5f5;padding:20px}
+.container{max-width:1100px;margin:0 auto;background:#fff;padding:30px;border-radius:8px;box-shadow:0 2px 10px rgba(0,0,0,0.1)}
+h1{text-align:center;color:#2c3e50;margin-bottom:10px;font-size:26px}
+h2{text-align:center;color:#555;margin-bottom:25px;font-size:18px;font-weight:normal}
+.nav{display:flex;justify-content:center;gap:10px;margin-bottom:25px;flex-wrap:wrap}
+.nav button{padding:10px 20px;background:#3498db;color:#fff;border:none;border-radius:5px;cursor:pointer;font-weight:bold;transition:all 0.3s}
+.nav button:hover{background:#2980b9;transform:translateY(-2px)}
+.page{border:3px solid #2c3e50;padding:20px;background:#fff;display:none;min-height:550px}
+.page.active{display:block}
+.page h3{text-align:center;color:#2c3e50;margin-bottom:20px;padding-bottom:10px;border-bottom:2px solid #3498db;font-size:20px}
+svg{width:100%;height:auto;border:1px solid #ddd;background:#fff}
+.entity{fill:#fff;stroke:#000;stroke-width:2}
+.process{fill:#fff;stroke:#000;stroke-width:2}
+.flow{stroke:#000;stroke-width:1.5;fill:none}
+.arrow{fill:#000}
+text{font-size:11px;fill:#000}
+.title{font-weight:bold;font-size:13px}
+.footer{text-align:center;margin-top:20px;padding-top:15px;border-top:2px solid #ddd;color:#777;font-size:14px}
+@media(max-width:768px){
+.container{padding:15px}
+h1{font-size:20px}
+h2{font-size:16px}
+.nav button{padding:8px 15px;font-size:12px}
+}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>System Analysis</h1>
+<h2>X-ray & Ultrasound Management System</h2>
+<div class="nav">
+<button onclick="show(0)">DFD Level 0</button>
+<button onclick="show(1)">DFD Level 1</button>
+<button onclick="show(2)">DFD Level 2</button>
+<button onclick="show(3)">ER Diagram</button>
+</div>
+
+<div id="p0" class="page active">
+<h3>Zero Level DFD (Context Diagram)</h3>
+<svg viewBox="0 0 800 600">
+<rect x="50" y="50" width="120" height="50" class="entity"/>
+<text x="110" y="80" text-anchor="middle" class="title">Patient</text>
+<rect x="630" y="50" width="120" height="50" class="entity"/>
+<text x="690" y="80" text-anchor="middle" class="title">Doctor</text>
+<rect x="630" y="200" width="120" height="50" class="entity"/>
+<text x="690" y="230" text-anchor="middle" class="title">Radiologist</text>
+<rect x="630" y="350" width="120" height="50" class="entity"/>
+<text x="690" y="380" text-anchor="middle" class="title">Lab Technician</text>
+<rect x="50" y="500" width="120" height="50" class="entity"/>
+<text x="110" y="530" text-anchor="middle" class="title">Admin</text>
+<circle cx="400" cy="300" r="90" class="process"/>
+<text x="400" y="285" text-anchor="middle" class="title">X-ray &</text>
+<text x="400" y="305" text-anchor="middle" class="title">Ultrasound</text>
+<text x="400" y="325" text-anchor="middle" class="title">System</text>
+<line x1="170" y1="75" x2="320" y2="260" class="flow"/>
+<polygon points="320,260 310,255 315,265" class="arrow"/>
+<text x="210" y="150">Appointment</text>
+<text x="210" y="165">Request</text>
+<line x1="310" y1="340" x2="170" y2="500" class="flow"/>
+<polygon points="170,500 175,490 165,495" class="arrow"/>
+<text x="210" y="430">Test Reports</text>
+<line x1="630" y1="75" x2="480" y2="250" class="flow"/>
+<polygon points="480,250 485,260 475,255" class="arrow"/>
+<text x="540" y="150">Prescription</text>
+<line x1="490" y1="260" x2="630" y2="90" class="flow"/>
+<polygon points="630,90 620,90 625,80" class="arrow"/>
+<text x="540" y="180">Reports</text>
+<line x1="630" y1="225" x2="490" y2="280" class="flow"/>
+<polygon points="490,280 495,270 485,275" class="arrow"/>
+<text x="540" y="240">Diagnosis</text>
+<line x1="480" y1="300" x2="630" y2="240" class="flow"/>
+<polygon points="630,240 620,240 625,230" class="arrow"/>
+<text x="540" y="280">Images</text>
+<line x1="630" y1="375" x2="480" y2="340" class="flow"/>
+<polygon points="480,340 485,350 475,345" class="arrow"/>
+<text x="540" y="350">Results</text>
+<line x1="490" y1="350" x2="630" y2="390" class="flow"/>
+<polygon points="630,390 620,390 625,380" class="arrow"/>
+<text x="540" y="380">Schedule</text>
+<line x1="170" y1="525" x2="320" y2="370" class="flow"/>
+<polygon points="320,370 315,360 325,365" class="arrow"/>
+<text x="210" y="460">Config</text>
+<line x1="310" y1="380" x2="170" y2="510" class="flow"/>
+<polygon points="170,510 175,500 165,505" class="arrow"/>
+<text x="210" y="490">Analytics</text>
+</svg>
+</div>
+
+<div id="p1" class="page">
+<h3>One Level DFD</h3>
+<svg viewBox="0 0 900 700">
+<rect x="50" y="50" width="100" height="40" class="entity"/>
+<text x="100" y="75" text-anchor="middle" class="title">Patient</text>
+<rect x="750" y="50" width="100" height="40" class="entity"/>
+<text x="800" y="75" text-anchor="middle" class="title">Doctor</text>
+<rect x="750" y="300" width="100" height="40" class="entity"/>
+<text x="800" y="325" text-anchor="middle" class="title">Radiologist</text>
+<rect x="50" y="550" width="100" height="40" class="entity"/>
+<text x="100" y="575" text-anchor="middle" class="title">Lab Tech</text>
+<circle cx="250" cy="150" r="55" class="process"/>
+<text x="250" y="140" text-anchor="middle" class="title">1.0</text>
+<text x="250" y="160" text-anchor="middle">Patient</text>
+<text x="250" y="175" text-anchor="middle">Registration</text>
+<circle cx="450" cy="150" r="55" class="process"/>
+<text x="450" y="140" text-anchor="middle" class="title">2.0</text>
+<text x="450" y="160" text-anchor="middle">Appointment</text>
+<text x="450" y="175" text-anchor="middle">Scheduling</text>
+<circle cx="450" cy="350" r="55" class="process"/>
+<text x="450" y="340" text-anchor="middle" class="title">3.0</text>
+<text x="450" y="360" text-anchor="middle">Test</text>
+<text x="450" y="375" text-anchor="middle">Execution</text>
+<circle cx="650" cy="350" r="55" class="process"/>
+<text x="650" y="340" text-anchor="middle" class="title">4.0</text>
+<text x="650" y="360" text-anchor="middle">Report</text>
+<text x="650" y="375" text-anchor="middle">Generation</text>
+<circle cx="250" cy="550" r="55" class="process"/>
+<text x="250" y="540" text-anchor="middle" class="title">5.0</text>
+<text x="250" y="560" text-anchor="middle">Billing &</text>
+<text x="250" y="575" text-anchor="middle">Payment</text>
+<rect x="250" y="260" width="150" height="25" style="fill:#fff;stroke:#000;stroke-width:2"/>
+<text x="325" y="277" text-anchor="middle">D1: Patient DB</text>
+<rect x="450" y="260" width="150" height="25" style="fill:#fff;stroke:#000;stroke-width:2"/>
+<text x="525" y="277" text-anchor="middle">D2: Appointment DB</text>
+<rect x="450" y="460" width="150" height="25" style="fill:#fff;stroke:#000;stroke-width:2"/>
+<text x="525" y="477" text-anchor="middle">D3: Test Images DB</text>
+<rect x="650" y="460" width="150" height="25" style="fill:#fff;stroke:#000;stroke-width:2"/>
+<text x="725" y="477" text-anchor="middle">D4: Reports DB</text>
+<rect x="50" y="460" width="150" height="25" style="fill:#fff;stroke:#000;stroke-width:2"/>
+<text x="125" y="477" text-anchor="middle">D5: Billing DB</text>
+<line x1="150" y1="70" x2="200" y2="130" class="flow"/>
+<polygon points="200,130 195,120 205,125" class="arrow"/>
+<text x="160" y="95">Patient Info</text>
+<line x1="250" y1="205" x2="250" y2="260" class="flow"/>
+<polygon points="250,260 245,250 255,250" class="arrow"/>
+<line x1="305" y1="150" x2="395" y2="150" class="flow"/>
+<polygon points="395,150 385,145 385,155" class="arrow"/>
+<line x1="450" y1="205" x2="450" y2="260" class="flow"/>
+<polygon points="450,260 445,250 455,250" class="arrow"/>
+<line x1="450" y1="285" x2="450" y2="295" class="flow"/>
+<polygon points="450,295 445,285 455,285" class="arrow"/>
+<line x1="150" y1="570" x2="195" y2="560" class="flow"/>
+<polygon points="195,560 185,560 190,550" class="arrow"/>
+<line x1="450" y1="405" x2="450" y2="460" class="flow"/>
+<polygon points="450,460 445,450 455,450" class="arrow"/>
+<line x1="505" y1="350" x2="595" y2="350" class="flow"/>
+<polygon points="595,350 585,345 585,355" class="arrow"/>
+<line x1="650" y1="405" x2="650" y2="460" class="flow"/>
+<polygon points="650,460 645,450 655,450" class="arrow"/>
+<line x1="705" y1="350" x2="750" y2="325" class="flow"/>
+<polygon points="750,325 740,325 745,315" class="arrow"/>
+<text x="720" y="330">Report</text>
+<line x1="250" y1="495" x2="250" y2="460" class="flow"/>
+<polygon points="250,460 245,470 255,470" class="arrow"/>
+</svg>
+</div>
+
+<div id="p2" class="page">
+<h3>Two Level DFD (Test Execution Process 3.0)</h3>
+<svg viewBox="0 0 900 600">
+<rect x="50" y="50" width="120" height="40" class="entity"/>
+<text x="110" y="75" text-anchor="middle" class="title">Lab Technician</text>
+<rect x="730" y="280" width="120" height="40" class="entity"/>
+<text x="790" y="305" text-anchor="middle" class="title">Radiologist</text>
+<circle cx="250" cy="150" r="50" class="process"/>
+<text x="250" y="140" text-anchor="middle" class="title">3.1</text>
+<text x="250" y="160" text-anchor="middle">Verify</text>
+<text x="250" y="175" text-anchor="middle">Patient</text>
+<circle cx="450" cy="150" r="50" class="process"/>
+<text x="450" y="140" text-anchor="middle" class="title">3.2</text>
+<text x="450" y="160" text-anchor="middle">Prepare</text>
+<text x="450" y="175" text-anchor="middle">Equipment</text>
+<circle cx="650" cy="150" r="50" class="process"/>
+<text x="650" y="140" text-anchor="middle" class="title">3.3</text>
+<text x="650" y="160" text-anchor="middle">Capture</text>
+<text x="650" y="175" text-anchor="middle">Images</text>
+<circle cx="650" cy="350" r="50" class="process"/>
+<text x="650" y="340" text-anchor="middle" class="title">3.4</text>
+<text x="650" y="360" text-anchor="middle">Quality</text>
+<text x="650" y="375" text-anchor="middle">Check</text>
+<circle cx="450" cy="480" r="50" class="process"/>
+<text x="450" y="470" text-anchor="middle" class="title">3.5</text>
+<text x="450" y="490" text-anchor="middle">Store</text>
+<text x="450" y="505" text-anchor="middle">Images</text>
+<rect x="50" y="250" width="160" height="25" style="fill:#fff;stroke:#000;stroke-width:2"/>
+<text x="130" y="267" text-anchor="middle">D3.1: Patient Records</text>
+<rect x="350" y="280" width="160" height="25" style="fill:#fff;stroke:#000;stroke-width:2"/>
+<text x="430" y="297" text-anchor="middle">D3.2: Equipment Log</text>
+<rect x="250" y="540" width="160" height="25" style="fill:#fff;stroke:#000;stroke-width:2"/>
+<text x="330" y="557" text-anchor="middle">D3.3: Image Storage</text>
+<line x1="170" y1="70" x2="210" y2="120" class="flow"/>
+<polygon points="210,120 205,110 215,115" class="arrow"/>
+<text x="180" y="90">Patient ID</text>
+<line x1="130" y1="250" x2="220" y2="190" class="flow"/>
+<polygon points="220,190 215,200 210,190" class="arrow"/>
+<text x="150" y="215">Details</text>
+<line x1="300" y1="150" x2="400" y2="150" class="flow"/>
+<polygon points="400,150 390,145 390,155" class="arrow"/>
+<text x="330" y="140">Verified</text>
+<line x1="450" y1="200" x2="450" y2="280" class="flow"/>
+<polygon points="450,280 445,270 455,270" class="arrow"/>
+<line x1="500" y1="150" x2="600" y2="150" class="flow"/>
+<polygon points="600,150 590,145 590,155" class="arrow"/>
+<text x="530" y="140">Ready</text>
+<line x1="650" y1="200" x2="650" y2="300" class="flow"/>
+<polygon points="650,300 645,290 655,290" class="arrow"/>
+<text x="660" y="250">Raw Images</text>
+<line x1="600" y1="370" x2="500" y2="470" class="flow"/>
+<polygon points="500,470 505,460 495,465" class="arrow"/>
+<text x="530" y="410">Verified</text>
+<text x="530" y="425">Images</text>
+<line x1="450" y1="530" x2="410" y2="545" class="flow"/>
+<polygon points="410,545 420,545 415,555" class="arrow"/>
+<line x1="500" y1="490" x2="730" y2="300" class="flow"/>
+<polygon points="730,300 720,300 725,290" class="arrow"/>
+<text x="600" y="380">Confirmation</text>
+</svg>
+</div>
+
+<div id="p3" class="page">
+<h3>Entity Relationship Diagram</h3>
+<svg viewBox="0 0 1000 750">
+<rect x="50" y="50" width="140" height="110" class="entity"/>
+<text x="120" y="75" text-anchor="middle" class="title">PATIENT</text>
+<line x1="50" y1="85" x2="190" y2="85" stroke="#000" stroke-width="2"/>
+<text x="60" y="105">PatientID (PK)</text>
+<text x="60" y="125">Name</text>
+<text x="60" y="145">DOB, Phone</text>
+<rect x="430" y="50" width="140" height="110" class="entity"/>
+<text x="500" y="75" text-anchor="middle" class="title">APPOINTMENT</text>
+<line x1="430" y1="85" x2="570" y2="85" stroke="#000" stroke-width="2"/>
+<text x="440" y="105">AppointmentID</text>
+<text x="440" y="125">Date, Time</text>
+<text x="440" y="145">Status</text>
+<rect x="430" y="320" width="140" height="110" class="entity"/>
+<text x="500" y="345" text-anchor="middle" class="title">TEST</text>
+<line x1="430" y1="355" x2="570" y2="355" stroke="#000" stroke-width="2"/>
+<text x="440" y="375">TestID (PK)</text>
+<text x="440" y="395">TestType</text>
+<text x="440" y="415">Cost, Date</text>
+<rect x="810" y="320" width="140" height="110" class="entity"/>
+<text x="880" y="345" text-anchor="middle" class="title">RADIOLOGIST</text>
+<line x1="810" y1="355" x2="950" y2="355" stroke="#000" stroke-width="2"/>
+<text x="820" y="375">RadiologistID</text>
+<text x="820" y="395">Name</text>
+<text x="820" y="415">License</text>
+<rect x="50" y="320" width="140" height="110" class="entity"/>
+<text x="120" y="345" text-anchor="middle" class="title">IMAGE</text>
+<line x1="50" y1="355" x2="190" y2="355" stroke="#000" stroke-width="2"/>
+<text x="60" y="375">ImageID (PK)</text>
+<text x="60" y="395">ImagePath</text>
+<text x="60" y="415">Type, Quality</text>
+<rect x="430" y="590" width="140" height="110" class="entity"/>
+<text x="500" y="615" text-anchor="middle" class="title">REPORT</text>
+<line x1="430" y1="625" x2="570" y2="625" stroke="#000" stroke-width="2"/>
+<text x="440" y="645">ReportID (PK)</text>
+<text x="440" y="665">Diagnosis</text>
+<text x="440" y="685">Findings</text>
+<rect x="810" y="50" width="140" height="110" class="entity"/>
+<text x="880" y="75" text-anchor="middle" class="title">BILLING</text>
+<line x1="810" y1="85" x2="950" y2="85" stroke="#000" stroke-width="2"/>
+<text x="820" y="105">BillID (PK)</text>
+<text x="820" y="125">Amount</text>
+<text x="820" y="145">Status</text>
+<rect x="50" y="590" width="140" height="110" class="entity"/>
+<text x="120" y="615" text-anchor="middle" class="title">EQUIPMENT</text>
+<line x1="50" y1="625" x2="190" y2="625" stroke="#000" stroke-width="2"/>
+<text x="60" y="645">EquipmentID</text>
+<text x="60" y="665">Name, Type</text>
+<text x="60" y="685">Status</text>
+<line x1="190" y1="105" x2="430" y2="105" stroke="#000" stroke-width="2"/>
+<polygon points="430,105 420,100 420,110" class="arrow"/>
+<text x="280" y="95">books</text>
+<text x="200" y="120" style="fill:#e74c3c;font-weight:bold">1</text>
+<text x="410" y="120" style="fill:#e74c3c;font-weight:bold">M</text>
+<line x1="500" y1="160" x2="500" y2="320" stroke="#000" stroke-width="2"/>
+<polygon points="500,320 495,310 505,310" class="arrow"/>
+<text x="510" y="245">requires</text>
+<text x="510" y="170" style="fill:#e74c3c;font-weight:bold">1</text>
+<text x="510" y="310" style="fill:#e74c3c;font-weight:bold">1</text>
+<line x1="430" y1="375" x2="190" y2="375" stroke="#000" stroke-width="2"/>
+<polygon points="190,375 200,370 200,380" class="arrow"/>
+<text x="280" y="365">generates</text>
+<text x="410" y="390" style="fill:#e74c3c;font-weight:bold">1</text>
+<text x="200" y="390" style="fill:#e74c3c;font-weight:bold">M</text>
+<line x1="500" y1="430" x2="500" y2="590" stroke="#000" stroke-width="2"/>
+<polygon points="500,590 495,580 505,580" class="arrow"/>
+<text x="510" y="515">produces</text>
+<text x="510" y="440" style="fill:#e74c3c;font-weight:bold">1</text>
+<text x="510" y="580" style="fill:#e74c3c;font-weight:bold">1</text>
+<line x1="810" y1="375" x2="570" y2="375" stroke="#000" stroke-width="2"/>
+<polygon points="570,375 580,370 580,380" class="arrow"/>
+<text x="660" y="365">analyzes</text>
+<text x="790" y="390" style="fill:#e74c3c;font-weight:bold">1</text>
+<text x="580" y="390" style="fill:#e74c3c;font-weight:bold">M</text>
+<line x1="570" y1="340" x2="810" y2="130" stroke="#000" stroke-width="2"/>
+<polygon points="810,130 800,130 805,120" class="arrow"/>
+<text x="660" y="220">creates</text>
+<text x="580" y="330" style="fill:#e74c3c;font-weight:bold">1</text>
+<text x="790" y="140" style="fill:#e74c3c;font-weight:bold">1</text>
+<line x1="190" y1="640" x2="430" y2="410" stroke="#000" stroke-width="2"/>
+<polygon points="430,410 420,415 425,405" class="arrow"/>
+<text x="280" y="510">used_for</text>
+<text x="200" y="630" style="fill:#e74c3c;font-weight:bold">1</text>
+<text x="410" y="420" style="fill:#e74c3c;font-weight:bold">M</text>
+</svg>
+</div>
+
+<div class="footer">
+<p>Page <span id="num">1</span> / 4</p>
+<p style="margin-top:10px;font-size:12px">X-ray & Ultrasound Management System - Professional DFD & ER Diagrams</p>
+</div>
+</div>
+
+<script>
+function show(n){
+var p=document.querySelectorAll('.page');
+for(var i=0;i<p.length;i++)p[i].classList.remove('active');
+p[n].classList.add('active');
+document.getElementById('num').textContent=n+1;
+}
+</script>
+</body>
+</html>
